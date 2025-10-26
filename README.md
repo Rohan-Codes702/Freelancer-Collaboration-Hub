@@ -55,22 +55,7 @@ A modern, responsive web application built using React.js and Tailwind CSS. It p
 2. **Projects**: Create new projects, search existing ones, and manage project details
 3. **Tasks**: Add tasks to projects, set priorities, mark as completed, and delete when done
 
-## 🎨 Features in Detail
 
-- **Dynamic Project Colors**: Each project gets a random gradient background
-- **Priority Levels**: Tasks can be marked as Low, Medium, or High priority with color coding
-- **Completion Tracking**: Visual progress bars and completion percentages
-- **Smooth Animations**: Hover effects and transitions for better user experience
-- **Accessibility**: Proper ARIA labels and keyboard navigation support
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-If you have any questions or suggestions, feel free to open an issue or contact the maintainers.
