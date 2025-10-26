@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid";
 import ProjectCard from "./ProjectCard";
 import SearchBar from "./SearchBar";
 
-function ProjectList({ projects, setProjects, onSelectProject }) {
+function ProjectList({ projects, setProjects, onSelectProject, darkMode }) {
   const [name, setName] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -32,7 +32,7 @@ function ProjectList({ projects, setProjects, onSelectProject }) {
       </h2>
 
       {/* Search Bar */}
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} darkMode={darkMode} />
 
       {/* Add Project */}
       <div className="flex flex-col md:flex-row gap-3 mb-8">

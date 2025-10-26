@@ -18,6 +18,9 @@ function App() {
     }
   });
 
+  // State for mobile sidebar toggle
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   // Initialize projects safely from localStorage
   const [projects, setProjects] = useState(() => {
     try {
@@ -56,11 +59,11 @@ function App() {
 
   return (
     <div className="flex h-screen transition-colors duration-500 bg-gray-100 dark:bg-gray-900">
-      <Sidebar darkMode={darkMode} />
+      <Sidebar darkMode={darkMode} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
         <div className="flex-1 overflow-auto p-6">
           <Routes>
@@ -88,6 +91,7 @@ function App() {
                   projects={projects}
                   setProjects={setProjects}
                   onSelectProject={setSelectedProject}
+                  darkMode={darkMode}
                 />
               }
             />
@@ -101,9 +105,10 @@ function App() {
                     project={selectedProject}
                     projects={projects}
                     setProjects={setProjects}
+                    darkMode={darkMode}
                   />
                 ) : (
-                  <div className="flex flex-col items-center justify-center h-full text-gray-500">
+                  <div className={`flex flex-col items-center justify-center h-full ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                     <p className="text-lg font-medium">No project selected</p>
                     <p className="text-sm">Go to the Projects tab and choose one.</p>
                   </div>
@@ -118,6 +123,7 @@ function App() {
                 <Messages
                   projects={projects}
                   setProjects={setProjects}
+                  darkMode={darkMode}
                 />
               }
             />

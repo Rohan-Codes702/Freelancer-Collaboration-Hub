@@ -75,7 +75,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Projects</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{projects.length}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{projects.length}</p>
           </div>
         </div>
 
@@ -90,7 +90,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Total Tasks</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{totalTasks}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{totalTasks}</p>
           </div>
         </div>
 
@@ -105,7 +105,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Completed</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{completedTasks}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{completedTasks}</p>
           </div>
         </div>
 
@@ -120,7 +120,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">High Priority</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{highPriorityTasks}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{highPriorityTasks}</p>
           </div>
         </div>
 
@@ -135,7 +135,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Messages</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{totalMessages}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{totalMessages}</p>
           </div>
         </div>
 
@@ -150,7 +150,7 @@ function Dashboard({ projects, darkMode }) {
               </div>
             </div>
             <h3 className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">Files</h3>
-            <p className="text-3xl font-bold text-gray-900 dark:text-white">{totalFiles}</p>
+            <p className={`text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{totalFiles}</p>
           </div>
         </div>
       </div>
