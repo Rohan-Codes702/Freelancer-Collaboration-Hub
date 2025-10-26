@@ -4,7 +4,8 @@ import Sidebar from "./Components/Sidebar";
 import Header from "./Components/Header";
 import Dashboard from "./Pages/Dashboard";
 import ProjectList from "./Components/ProjectList";
-import TaskList from "./Components/ProjectCard";
+import TaskList from "./Components/TaskList";
+import Messages from "./Pages/Messages";
 
 function App() {
   // Initialize theme from localStorage
@@ -22,7 +23,14 @@ function App() {
     try {
       const raw = localStorage.getItem("projects");
       const parsed = raw ? JSON.parse(raw) : [];
-      return Array.isArray(parsed) ? parsed : [];
+      return Array.isArray(parsed)
+        ? parsed.map((p) => ({
+            ...p,
+            tasks: Array.isArray(p.tasks) ? p.tasks : [],
+            messages: Array.isArray(p.messages) ? p.messages : [],
+            files: Array.isArray(p.files) ? p.files : []
+          }))
+        : [];
     } catch {
       return [];
     }
@@ -67,6 +75,7 @@ function App() {
                   projects={projects}
                   setProjects={setProjects}
                   onSelectProject={setSelectedProject}
+                  darkMode={darkMode}
                 />
               }
             />
@@ -99,6 +108,17 @@ function App() {
                     <p className="text-sm">Go to the Projects tab and choose one.</p>
                   </div>
                 )
+              }
+            />
+
+            {/* Messages Page */}
+            <Route
+              path="/messages"
+              element={
+                <Messages
+                  projects={projects}
+                  setProjects={setProjects}
+                />
               }
             />
           </Routes>

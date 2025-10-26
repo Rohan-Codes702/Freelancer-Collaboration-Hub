@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ProjectCard from "./ProjectCard";
+import SearchBar from "./SearchBar";
 
-function ProjectList({ projects, setProjects }) {
+function ProjectList({ projects, setProjects, onSelectProject }) {
   const [name, setName] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const addProject = () => {
     if (!name.trim()) return;
@@ -19,13 +21,18 @@ function ProjectList({ projects, setProjects }) {
     setName("");
   };
 
-  
+  const filteredProjects = projects.filter((project) =>
+    project.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <div className="p-4">
       <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
         Projects
       </h2>
+
+      {/* Search Bar */}
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
       {/* Add Project */}
       <div className="flex flex-col md:flex-row gap-3 mb-8">
@@ -45,18 +52,29 @@ function ProjectList({ projects, setProjects }) {
       </div>
 
       {/* Projects Cards */}
-      {projects.length === 0 ? (
-        <p className="text-gray-500 dark:text-gray-400 text-lg">
-          No projects yet. Add a new one to get started.
-        </p>
+      {filteredProjects.length === 0 ? (
+        <div className="text-center py-12">
+          <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-slate-700 to-slate-800 rounded-full flex items-center justify-center">
+            <svg className="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <p className="text-slate-400 text-lg font-medium">
+            {searchTerm ? "No projects match your search." : "No projects yet. Add a new one to get started."}
+          </p>
+          <p className="text-slate-500 text-sm mt-2">
+            {searchTerm ? "Try adjusting your search terms." : "Create your first project to begin organizing your tasks."}
+          </p>
+        </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          {filteredProjects.map((project) => (
             <ProjectCard
               key={project.id}
               project={project}
               projects={projects}
               setProjects={setProjects}
+              onSelectProject={onSelectProject}
             />
           ))}
         </div>
